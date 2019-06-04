@@ -13,7 +13,7 @@
 % according to the author-year natbib style
 
 %
-\documentclass{aa}  
+\documentclass[referee]{aa}  
 
 %
 \usepackage{graphicx}
@@ -27,7 +27,7 @@
 \begin{document} 
 
 
-   \title{Using ExPRES for the ESA-JUICE Mission Planning}
+   \title{JUICE-ExPRES}
 
    \subtitle{}
 
@@ -73,13 +73,30 @@
 
 \section{Introduction}
 
-   
+Jovian radio emissions
+
+ExPRES \citep{Louis_AA_2019}   
 
 %__________________________________________________________________
 
-\section{Galileo Flyby}
-We test the ExPRES prediction capabilities on the first flyby of Ganymede by the Galileo. 
+\section{Jovian radio emissions occultation by Ganymede}
+\citet{kurth_GRL_97} observed that the Jovian hectometric radio emissions are occulted by Ganymede during G01 flyby (first Ganymede flyby) of the Galileo S/C, on June 27th 1996. Figure \ref{fig:g01} shows the Galileo/PWS (Plasma Waves Science) \citep{gurnett_SSR_92} spectrogram during G01 flyby. The occultation is observed between 05:50 and 06:20 SCET. The occultation spectral ingress and egress profiles imply that radio sources at higher frequencies (located close to Jupiter) are occulted earlier and reappears later than the lower frequency sources (located further out from Jupiter).
 
+We model this occultation using ExPRES. The location of the visible radio sources is modeled every minute of time during the interval displayed on Figure \ref{fig:g01}. Northern and Southern main auroral oval (with $L_\textrm{shell}=30$) are modeled with active magnetic field lines every 1$^\circ$ on longitude. We use the JRM09 magnetic field model \citep{Connerney:2018jx}. The unstable electron temperature set to 5~keV. {\bf references for temperature and Lshell}
 
+The occultation is computed using a simple computation of the intercept distance between the center of Ganymede and the straight lines passing by each radio source and the observer. The occultation estimation uses a simple occultation by the surface of Ganymede: any source with an intercept distance shorter than one Ganymede Radius is occulted, as sketched on Figure \ref{fig:occult}.
 
+%The second occultation estimation includes a model of the Ganymede's ionosphere (e.g., as in Eviatar et al (2001)), and uses the modeled cutoff frequency altitude for each frequency.
+
+\begin{figure}
+\includegraphics[width=\linewidth]{gll-g01.png}
+\caption{Galileo PWS spectrogram observed during G01 flyby. The Jovian radio emissions are visible at }\label{fig:g01}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=0.7\linewidth]{occult.pdf}
+\caption{Simple geometrical occultation scheme used in this study. The intercept distance (dotted segment) is computed as the distance between the center of occulting body (here, Ganymede), and the straight line passing by each radio source and the observer.}\label{fig:occult}
+\end{figure}
+
+\bibliography{juice-expres}
 \end{document}
